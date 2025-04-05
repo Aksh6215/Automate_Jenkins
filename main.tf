@@ -10,8 +10,8 @@ terraform {
 
 # configuring  the Azure Provider
 provider "azurerm" {
-  subscription_id = "7c08c6b0-62da-4c5d-9b2f-aa98aeb10f2e"
-  tenant_id       = "82867020-455c-4803-86b9-aa60a4339cb8"
+  subscriptionId = "7c08c6b0-62da-4c5d-9b2f-aa98aeb10f2e"
+  tenantId = "82867020-455c-4803-86b9-aa60a4339cb8"
 
   features {
 
@@ -21,13 +21,13 @@ provider "azurerm" {
 
 # Creating a new resource group
 resource "azurerm_resource_group" "new_rg" {
-  name     = "akshat21-rg"
+  name     = "akshatRG"
   location = "East US"
 }
 
 # Creating a Storage Account with a new name 
 resource "azurerm_storage_account" "new_storage" {
-  name                     = "akshatstorage21"
+  name                     = "akshatstorage"
   resource_group_name      = azurerm_resource_group.new_rg.name
   location                 = azurerm_resource_group.new_rg.location
   account_tier             = "Standard"
@@ -41,7 +41,7 @@ resource "azurerm_storage_account" "new_storage" {
 # Creating a storage container with a new name
 
 resource "azurerm_storage_container" "new_container" {
-  name                  = "akshat-container"
+  name                  = "newcontainer"
   storage_account_id    = azurerm_storage_account.new_storage.id
   container_access_type = "private"
 }
